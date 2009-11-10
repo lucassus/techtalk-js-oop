@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name, :null => false
       t.text :description
       t.decimal :price, :null => false
+      t.integer :quantity
       t.boolean :promotion
 
       t.timestamps

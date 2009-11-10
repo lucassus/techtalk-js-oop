@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tech Talk - organizing js</title>
+    <%= stylesheet_link_tag 'scaffold' %>
+
+    <%= javascript_include_tag 'lib/jquery' %>
+    <%= javascript_include_tag 'lib/json' %>
+
+    <!-- jqGrid -->
+    <%= javascript_include_tag '/jqGrid/i18n/grid.locale-en.js' %>
+    <%= javascript_include_tag '/jqGrid/jquery.jqGrid.min.js' %>
+    <%= stylesheet_link_tag '/jqGrid/themes/ui.jqgrid.css' %>
+    <%= stylesheet_link_tag '/jqGrid/themes/steel/grid.css' %>
+
+    <%= javascript_include_tag 'less_routes' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= javascript_include_tag 'grid/base', 'grid/installer',
+      'grid/categories', 'grid/products' %>
+
+    <%= yield :head %>
+  </head>
+
+  <body>
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
