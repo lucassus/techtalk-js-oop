@@ -1,18 +1,25 @@
 cs.namespace('cs.grid');
 
 cs.grid.Categories = function(container, productsGrid) {
-  cs.grid.Categories.baseConstructor.call(this, container);
+    cs.grid.Categories.baseConstructor.call(this, container);
 
-  this.productsGrid = productsGrid;
-  // Set base url for grid data
-  this.baseUrl = categories_path('.json');
-  this.editUrl = function(id) { return edit_category_path(id, '') };
+    this.getProductsGrid = function() {
+        return productsGrid || $('.grid-products').data('grid-instance')
+    };
+
+    // Set base url for grid data
+    this.baseUrl = categories_path('.json');
 };
 
 cs.extend(cs.grid.Categories, cs.grid.Base);
 
+cs.grid.Categories.prototype.getEditUrl = function(id) {
+    return edit_category_path(id, '');
+};
+
 cs.grid.Categories.prototype.buildOptions = function() {
     var self = this;
+
     var actionsFormatter = function(id, opts) {
         var editLink = self.editLink(edit_category_path, id);
         var showLink = self.showLink(category_path, id);
@@ -32,7 +39,7 @@ cs.grid.Categories.prototype.buildOptions = function() {
         url: this.baseUrl,
         colNames: colNames,
         colModel: colModel,
-        onSelectRow: function(id) { self.productsGrid.reload(id); },
+        onSelectRow: function(id) { self.getProductsGrid().reload(id); },
         ondblClickRow: function(id) { self.editRow(id); }
     });
 };

@@ -1,17 +1,21 @@
 cs.namespace('grid');
 
 cs.grid.Products = function(container) {
-  cs.grid.Products.baseConstructor.call(this, container);
+    cs.grid.Products.baseConstructor.call(this, container);
 
-  // Set base url for grid data
-  this.baseUrl = products_path('.json');
-  this.editUrl = function(id) { return edit_product_path(id, ''); }
+    // Set base url for grid data
+    this.baseUrl = products_path('.json');
 };
 
 cs.extend(cs.grid.Products, cs.grid.Base);
 
+cs.grid.Products.prototype.getEditUrl = function(id) {
+    return edit_product_path(id, '');
+};
+
 cs.grid.Products.prototype.buildOptions = function() {
     var self = this;
+    
     var actionsFormatter = function(id, opts) {
         var editLink = self.editLink(edit_product_path, id);
         var showLink = self.showLink(product_path, id);

@@ -48,10 +48,15 @@ cs.grid.Base.prototype.buildActionLink = function(route, id, icon, title) {
     });
 };
 
+// Must be implemented in the subclass
+cs.grid.Base.prototype.buildOptions = function() {
+    throw new Error('Unsupported operation on an abstract class.');
+};
+
 cs.grid.Base.prototype.init = function() {
     var options = this.buildOptions();
     this.grid = this.gridContainer.jqGrid(options);
-}
+};
 
 cs.grid.Base.prototype.reload = function(params) {
     var defaults = {
@@ -63,8 +68,12 @@ cs.grid.Base.prototype.reload = function(params) {
     this.grid.setGridParam(params).trigger("reloadGrid");
 };
 
+cs.grid.Base.prototype.getEditUrl = function() {
+    throw new Error('Unsupported operation on an abstract class.');
+};
+
 cs.grid.Base.prototype.editRow = function(id) {
-    if (this.editUrl) {
-        window.location.href = this.editUrl(id);
+    if (this.getEditUrl) {
+        window.location.href = this.getEditUrl(id);
     }
 };

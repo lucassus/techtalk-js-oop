@@ -1,10 +1,9 @@
 cs.namespace('grid');
 
 cs.grid.Installer = function(root) {
-  var self = this;
 
   /**
-   * Activate form behaviour on all children of given element. Automatically called
+   * Activate grid behaviour on all children of given element. Automatically called
    * on document.ready.
    */
   this.installAll = function() {
@@ -14,7 +13,7 @@ cs.grid.Installer = function(root) {
   }
 
   /**
-   * Activates a form behaviour of given element - detects if it has grid-xxx class
+   * Activates a grid behaviour of given element - detects if it has grid-xxx class
    * and if so, it passes it to Xxx constructor.
    */
   var install = function(element) {
@@ -51,7 +50,7 @@ cs.grid.Installer = function(root) {
   /**
    * Get proper name of the class grid the dashed variant
    *
-   * (job-search => JobSearchForm)
+   * (grid-search => GridSearch)
    */
   var getClassNameWithoutDashes = function(dashedClassName) {
     var clsparts = dashedClassName.split('-');
