@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @products }
+      format.json  { render :json => Product.grid_data(params) }
     end
   end
 

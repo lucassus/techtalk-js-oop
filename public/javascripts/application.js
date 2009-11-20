@@ -1,8 +1,24 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
 cs = {};
 
-cs.namespace = function() {
+cs.namespace = function(name) {
+    var parts = name.split('.');
+    var current = cs;
+    for (var i in parts) {
+        var part = parts[i];
+        if (!current[part]) {
+            current[part] = {};
+        }
 
+        current = current[part];
+    }
+};
+
+cs.extend = function(subClass, baseClass) {
+    function inheritance() {}
+    inheritance.prototype = baseClass.prototype;
+
+    subClass.prototype = new inheritance();
+    subClass.prototype.constructor = subClass;
+    subClass.baseConstructor = baseClass;
+    subClass.superClass = baseClass.prototype;
 };

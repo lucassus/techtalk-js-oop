@@ -1,21 +1,16 @@
 <h1>Listing categories</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
+<div class="grid grid-categories">
+  <table class="grid-container scroll"></table>
+  <div class="grid-pager scroll"></div>
+</div>
 
-<% @categories.each do |category| %>
-  <tr>
-    <td><%=h category.name %></td>
-    <td><%=h category.description %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<br />
+
+<div class="grid grid-products">
+  <table class="grid-container scroll"></table>
+  <div class="grid-pager scroll"></div>
+</div>
 
 <br />
 

@@ -6,7 +6,9 @@
     <%= stylesheet_link_tag 'scaffold' %>
 
     <%= javascript_include_tag 'lib/jquery' %>
+    <%= javascript_include_tag 'lib/jquery.template' %>
     <%= javascript_include_tag 'lib/json' %>
+    <%= javascript_include_tag 'less_routes' %>
 
     <!-- jqGrid -->
     <%= javascript_include_tag '/jqGrid/i18n/grid.locale-en.js' %>
@@ -14,9 +16,11 @@
     <%= stylesheet_link_tag '/jqGrid/themes/ui.jqgrid.css' %>
     <%= stylesheet_link_tag '/jqGrid/themes/steel/grid.css' %>
 
-    <%= javascript_include_tag 'less_routes' %>
-    <%= javascript_include_tag 'application' %>
+    <!-- jquery-ui -->
+    <%= javascript_include_tag '/jquery-ui/js/jquery-ui-1.7.2.custom.min.js' %>
+    <%= stylesheet_link_tag '/jquery-ui/css/redmond/jquery-ui-1.7.2.custom.css' %>
 
+    <%= javascript_include_tag 'application', 'main' %>
     <%= javascript_include_tag 'grid/base', 'grid/installer',
       'grid/categories', 'grid/products' %>
 
