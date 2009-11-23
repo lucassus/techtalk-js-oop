@@ -13,12 +13,15 @@ cs.namespace = function(name) {
     }
 };
 
-cs.extend = function(subClass, baseClass) {
-    function inheritance() {}
-    inheritance.prototype = baseClass.prototype;
+cs.extend = function(subClass, superClass) {
+    var F = function() {};
+    F.prototype = superClass.prototype;
 
-    subClass.prototype = new inheritance();
+    subClass.prototype = new F();
     subClass.prototype.constructor = subClass;
-    subClass.baseConstructor = baseClass;
-    subClass.superClass = baseClass.prototype;
+
+    subClass.superclass = superClass.prototype;
+    if (superClass.prototype.constructor == Object.prototype.constructor) {
+        superClass.prototype.constructor = superClass;
+    }
 };

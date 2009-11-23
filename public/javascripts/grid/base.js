@@ -1,12 +1,9 @@
 cs.namespace('grid');
 
-cs.grid.Base = function(container) {
-    this.gridContainer = container.find('.grid-container');
-    this.gridPager = container.find('.grid-pager');
+cs.grid.Base = (function() {
 
-    this.grid = null;
-
-    this.defaultOptions = {
+    // Private static attribute
+    var DEFAULT_OPTIONS = {
         mtype: 'GET',
         datatype: 'json',
         jsonReader: {
@@ -25,6 +22,19 @@ cs.grid.Base = function(container) {
 
         imgpath: '/jqGrid/themes/basic/images'
     };
+
+    return function(container) {
+        this.defaultOptions = DEFAULT_OPTIONS;
+        this.gridContainer = container.find('.grid-container');
+        this.gridPager = container.find('.grid-pager');
+
+        this.grid = null;
+    };
+})();
+
+cs.grid.Base.prototype.init = function() {
+    var options = this.buildOptions();
+    this.grid = this.gridContainer.jqGrid(options);
 };
 
 cs.grid.Base.prototype.editLink = function(route, id) {
@@ -48,14 +58,10 @@ cs.grid.Base.prototype.buildActionLink = function(route, id, icon, title) {
     });
 };
 
-// Must be implemented in the subclass
-cs.grid.Base.prototype.buildOptions = function() {
-    throw new Error('Unsupported operation on an abstract class.');
-};
-
-cs.grid.Base.prototype.init = function() {
-    var options = this.buildOptions();
-    this.grid = this.gridContainer.jqGrid(options);
+cs.grid.Base.prototype.editRow = function(id) {
+    if (this.getEditUrl) {
+        window.location.href = this.getEditUrl(id);
+    }
 };
 
 cs.grid.Base.prototype.reload = function(params) {
@@ -68,12 +74,13 @@ cs.grid.Base.prototype.reload = function(params) {
     this.grid.setGridParam(params).trigger("reloadGrid");
 };
 
+// Must be implemented in the subclass
+
+cs.grid.Base.prototype.buildOptions = function() {
+    throw new Error('Unsupported operation on an abstract class.');
+};
+
 cs.grid.Base.prototype.getEditUrl = function() {
     throw new Error('Unsupported operation on an abstract class.');
 };
 
-cs.grid.Base.prototype.editRow = function(id) {
-    if (this.getEditUrl) {
-        window.location.href = this.getEditUrl(id);
-    }
-};
