@@ -31,8 +31,8 @@ cs.grid.Installer = function(root) {
             var className = getClassNameWithoutDashes(dashedClassName);
             var gridClass = cs.grid[className];
 
-            /* timeout to ensure it is called in separate run of event loop. */
             if (gridClass) {
+                /* timeout to ensure it is called in separate run of event loop. */
                 setTimeout(function() {
                     var grid = new gridClass($(element));
                     $(element).data('grid-instance', grid);

@@ -1,4 +1,4 @@
-cs.namespace('cs.grid');
+cs.namespace('grid');
 
 cs.grid.Categories = (function() {
     return function(container, productsGrid) {
