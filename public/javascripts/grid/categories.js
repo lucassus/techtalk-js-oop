@@ -2,8 +2,8 @@ cs.namespace('cs.grid');
 
 cs.grid.Categories = (function() {
     return function(container, productsGrid) {
-        // Call the superclass's constructor in the scope of this.
-        cs.grid.Categories.superclass.constructor.call(this, container);
+        // Call the superClass's constructor in the scope of this.
+        cs.grid.Categories.superClass.constructor.call(this, container);
 
         this.getProductsGrid = function() {
             return productsGrid || $('.grid-products').data('grid-instance')

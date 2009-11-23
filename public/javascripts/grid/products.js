@@ -2,8 +2,8 @@ cs.namespace('grid');
 
 cs.grid.Products = (function() {
     return function(container) {
-        // Call the superclass's constructor in the scope of this.
-        cs.grid.Products.superclass.constructor.call(this, container);
+        // Call the superClass's constructor in the scope of this.
+        cs.grid.Products.superClass.constructor.call(this, container);
 
         // Set base url for grid data
         this.baseUrl = products_path('.json');
