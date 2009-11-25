@@ -65,4 +65,3 @@ cs.grid.Base.prototype.buildOptions = function() {
 cs.grid.Base.prototype.getEditUrl = function() {
     throw new Error('Unsupported operation on an abstract class.');
 };
-
